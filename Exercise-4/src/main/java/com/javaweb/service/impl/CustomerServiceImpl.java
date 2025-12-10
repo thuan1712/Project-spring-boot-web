@@ -73,6 +73,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void updateOrAddCustomer(CustomerDTO customerDTO) {
         CustomerEntity customerEntity = modelMapper.map(customerDTO, CustomerEntity.class);
+        if(customerDTO.getId()!= null && customerDTO.getId()>0){
+            CustomerEntity customer = customerRepository.findById(customerDTO.getId()).get();
+            customerEntity.setStaffUsers(customer.getStaffUsers());
+            customerEntity.setTransactions(customer.getTransactions());
+        }
         customerRepository.save(customerEntity);
     }
 

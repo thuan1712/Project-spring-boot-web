@@ -492,9 +492,7 @@
         });
     }
 
-    // ĐOẠN CODE THAY THẾ BẮT ĐẦU
 
-    // Hàm mới để hiển thị thanh thông báo thành công (Toast-like)
     function showAlert(message) {
         // Cập nhật nội dung và hiển thị Alert
         $('#success-alert').html('<button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><strong>Thành công!</strong> ' + message);
@@ -545,24 +543,23 @@
     </c:if>
 
 
-    // Gắn sự kiện cho nút Tìm kiếm
+
     $('#btnSearchBuilding').click(function (e) {
         e.preventDefault();
         $('#listForm').submit();
     })
 
-    // 1. Hàm xóa cho từng dòng (có thêm tham số tên)
+
     function deleteBuilding(id, name) {
         var buildingIds = [id];
         var buildingNames = [name];
         deleteBuildings(buildingIds, buildingNames);
     }
 
-    // 2. Xử lý sự kiện khi click nút Xóa Tòa Nhà (nút lớn)
+
     $('#btnDeleteBuilding').click(function (e) {
         e.preventDefault();
 
-        // Lấy danh sách các checkbox đã được chọn
         var selectedCheckboxes = $('#tableList').find('tbody input[type = checkbox][name = checkList]:checked');
 
         var buildingIds = selectedCheckboxes.map(function () {
@@ -582,12 +579,10 @@
         deleteBuildings(buildingIds, buildingNames);
     });
 
-    // 3. Hàm thực hiện xóa (thêm xác nhận với tên tòa nhà)
     function deleteBuildings(ids, names) {
-        // Tạo chuỗi tên tòa nhà để hiển thị trong cửa sổ xác nhận
+
         var namesString = names.join(', ');
 
-        // Hiển thị hộp thoại xác nhận
         var confirmDelete = confirm("Bạn có chắc chắn muốn xóa những tòa nhà sau: \n" + namesString + "?");
 
         if (confirmDelete) {
@@ -612,10 +607,9 @@
 
     $(document).ready(function () {
         $('#checkAll').click(function () {
-            // Lấy trạng thái checked của checkbox tiêu đề
+
             var isChecked = this.checked;
 
-            // Cập nhật trạng thái checked cho TẤT CẢ checkbox có name="checkList" (trong thân bảng)
             $('input[name="checkList"]').prop('checked', isChecked);
         });
     });
